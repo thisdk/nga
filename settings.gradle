@@ -8,4 +8,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "bootstrap"
 include ':app'
-include ':library'

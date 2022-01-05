@@ -1,10 +1,10 @@
 # bootstrap
 
-    android kotlin mvvm 学习工程
+android kotlin mvi 快速开发框架
 
 ## License
 
-    Copyright 2020 thisdk Contributors
+    Copyright 2021 thisdk Contributors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
