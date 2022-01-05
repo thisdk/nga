@@ -12,15 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="io.github.thisdk.bootstrap.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_mine"
+        android:name="io.github.thisdk.bootstrap.ui.mine.MineFragment"
+        android:label="@string/title_mine"
+        tools:layout="@layout/fragment_mine" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="io.github.thisdk.bootstrap.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
 
 </navigation>
