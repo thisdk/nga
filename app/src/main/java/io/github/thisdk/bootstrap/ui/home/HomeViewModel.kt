@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.thisdk.bootstrap.data.NetworkRepository
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,10 +25,8 @@ class HomeViewModel @Inject constructor(
 
     fun test() {
         viewModelScope.launch {
-            delay(2000)
             _text.value = networkRepository.getData1()
             _message.value = "message"
-            delay(1000)
             _text.value = networkRepository.getData2()
         }
     }

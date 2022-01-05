@@ -1,13 +1,9 @@
 package io.github.thisdk.bootstrap.data
 
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-@Module
-@InstallIn(ActivityComponent::class)
-class NetworkRepository {
+class NetworkRepository @Inject constructor() {
 
     suspend fun getData1(): String {
         delay(2000)
