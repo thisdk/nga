@@ -1,40 +1,41 @@
 package io.github.thisdk.bootstrap.ui.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import dagger.hilt.android.AndroidEntryPoint
+import io.github.thisdk.bootstrap.architecture.ktx.observeState
+import io.github.thisdk.bootstrap.architecture.mvi.BaseMviFragment
 import io.github.thisdk.bootstrap.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
+@AndroidEntryPoint
+class HomeFragment : BaseMviFragment<HomeViewModel, FragmentHomeBinding>() {
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    override val viewModel: HomeViewModel by activityViewModels()
 
-    private var _binding: FragmentHomeBinding? = null
+    override fun initViewModel() {
 
-    private val binding get() = _binding!!
+        viewModel.viewStates.let { state ->
+            state.observeState(viewLifecycleOwner, HomeViewState::value1) {
+                binding.textValue1.text = it
+            }
+            state.observeState(viewLifecycleOwner, HomeViewState::value2) {
+                binding.textValue2.text = it
+            }
+        }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding.btnGetValue1.setOnClickListener {
+            viewModel.dispatch(HomeViewAction.Value1)
+        }
+        binding.btnGetValue2.setOnClickListener {
 
-        val root: View = binding.root
+        }
+        binding.btnGetValue3.setOnClickListener {
 
-        viewModel.text.observe(viewLifecycleOwner, {
-            binding.textHome.text = it
-        })
+        }
+        binding.btnGetValue4.setOnClickListener {
+            viewModel.dispatch(HomeViewAction.FetchData)
+        }
 
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
