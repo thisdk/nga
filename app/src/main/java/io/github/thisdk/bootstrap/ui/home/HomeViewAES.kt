@@ -1,15 +1,15 @@
 package io.github.thisdk.bootstrap.ui.home
 
-import io.github.thisdk.bootstrap.architecture.mvi.MviViewAction
-import io.github.thisdk.bootstrap.architecture.mvi.MviViewEvent
+import androidx.annotation.StringRes
 
-sealed class HomeViewAction : MviViewAction {
+sealed class HomeViewAction {
     object FetchData : HomeViewAction()
     object Value1 : HomeViewAction()
 }
 
-sealed class HomeViewEvent : MviViewEvent() {
-    object ShowDialog : HomeViewEvent()
+sealed class HomeViewEvent {
+    data class ShowToastStr(val message: String) : HomeViewEvent()
+    data class ShowToastRes(@StringRes val message: Int) : HomeViewEvent()
 }
 
 data class HomeViewState(

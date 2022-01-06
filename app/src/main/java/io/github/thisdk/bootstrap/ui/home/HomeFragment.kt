@@ -2,7 +2,9 @@ package io.github.thisdk.bootstrap.ui.home
 
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.thisdk.bootstrap.architecture.ktx.observeEvent
 import io.github.thisdk.bootstrap.architecture.ktx.observeState
+import io.github.thisdk.bootstrap.architecture.ktx.toast
 import io.github.thisdk.bootstrap.architecture.mvi.BaseMviFragment
 import io.github.thisdk.bootstrap.databinding.FragmentHomeBinding
 
@@ -22,6 +24,18 @@ class HomeFragment : BaseMviFragment<HomeViewModel, FragmentHomeBinding>() {
             }
         }
 
+        viewModel.viewEvents.observeEvent(viewLifecycleOwner, {
+            when (it) {
+                is HomeViewEvent.ShowToastStr -> context?.toast(it.message)
+                is HomeViewEvent.ShowToastRes -> context?.toast(it.message)
+            }
+        })
+
+        initListener()
+
+    }
+
+    private fun initListener() {
 
         binding.btnGetValue1.setOnClickListener {
             viewModel.dispatch(HomeViewAction.Value1)

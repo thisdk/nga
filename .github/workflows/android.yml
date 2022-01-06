@@ -17,7 +17,7 @@ jobs:
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
       - name: Build with Gradle
-        run: ./gradlew clean assembleRelease
+        run: ./gradlew clean assemble
       - uses: actions/upload-artifact@v2
         with:
           name: bootstrap
