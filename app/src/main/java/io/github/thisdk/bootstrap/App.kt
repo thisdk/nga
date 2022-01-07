@@ -1,33 +1,20 @@
 package io.github.thisdk.bootstrap
 
 import android.app.Application
+import coil.Coil
+import coil.ImageLoader
 import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
 @HiltAndroidApp
 class App : Application() {
 
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
     override fun onCreate() {
         super.onCreate()
-    }
-
-    override fun registerActivityLifecycleCallbacks(callback: ActivityLifecycleCallbacks?) {
-        super.registerActivityLifecycleCallbacks(callback)
-    }
-
-    override fun unregisterActivityLifecycleCallbacks(callback: ActivityLifecycleCallbacks?) {
-        super.unregisterActivityLifecycleCallbacks(callback)
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-    }
-
-    override fun onTrimMemory(level: Int) {
-        super.onTrimMemory(level)
-    }
-
-    override fun onTerminate() {
-        super.onTerminate()
+        Coil.setImageLoader(imageLoader)
     }
 
 }

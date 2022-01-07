@@ -1,6 +1,7 @@
 package io.github.thisdk.bootstrap.ui.home
 
 import androidx.fragment.app.activityViewModels
+import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.thisdk.bootstrap.architecture.ktx.observeEvent
 import io.github.thisdk.bootstrap.architecture.ktx.observeState
@@ -22,6 +23,12 @@ class HomeFragment : BaseMviFragment<HomeViewModel, FragmentHomeBinding>() {
             state.observeState(viewLifecycleOwner, HomeViewState::value2) {
                 binding.textValue2.text = it
             }
+            state.observeState(viewLifecycleOwner, HomeViewState::value3) {
+                binding.textValue3.text = it
+            }
+            state.observeState(viewLifecycleOwner, HomeViewState::url) {
+                binding.ivImage.load(it)
+            }
         }
 
         viewModel.viewEvents.observeEvent(viewLifecycleOwner, {
@@ -41,15 +48,14 @@ class HomeFragment : BaseMviFragment<HomeViewModel, FragmentHomeBinding>() {
             viewModel.dispatch(HomeViewAction.Value1)
         }
         binding.btnGetValue2.setOnClickListener {
-
+            viewModel.dispatch(HomeViewAction.Value2)
         }
         binding.btnGetValue3.setOnClickListener {
-
+            viewModel.dispatch(HomeViewAction.Value3)
         }
-        binding.btnGetValue4.setOnClickListener {
-            viewModel.dispatch(HomeViewAction.FetchData)
+        binding.btnImageLoad.setOnClickListener {
+            viewModel.dispatch(HomeViewAction.LoadImage)
         }
-
     }
 
 }
