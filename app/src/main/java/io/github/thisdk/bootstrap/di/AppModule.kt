@@ -11,9 +11,11 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import io.github.thisdk.bootstrap.data.NewsRepository
-import io.github.thisdk.bootstrap.data.NewsRepositoryImpl
-import io.github.thisdk.bootstrap.data.source.WanService
+import io.github.thisdk.bootstrap.common.NgaInterceptor
+import io.github.thisdk.bootstrap.config.AppConfig
+import io.github.thisdk.bootstrap.data.ThreadRepository
+import io.github.thisdk.bootstrap.data.impl.DefaultThreadRepository
+import io.github.thisdk.bootstrap.data.source.ThreadService
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -23,20 +25,20 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object OkHttpClientModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC)
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC)
         return OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
-            .addInterceptor(interceptor)
+            .addInterceptor(NgaInterceptor())
+            .addInterceptor(httpLoggingInterceptor)
             .build()
     }
 }
@@ -49,7 +51,7 @@ object RetrofitModule {
     @ExperimentalSerializationApi
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://www.wanandroid.com")
+            .baseUrl(AppConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
             .build()
@@ -74,19 +76,16 @@ object ImageLoaderModule {
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class NewsRepositoryModule {
-    @Binds
-    abstract fun bindNewsRepository(newsRepositoryImpl: NewsRepositoryImpl): NewsRepository
+object ThreadServiceModule {
+    @Provides
+    fun provideThreadService(retrofit: Retrofit): ThreadService {
+        return retrofit.create(ThreadService::class.java)
+    }
 }
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object BaiduServiceModule {
-
-    @Provides
-    fun provideBaiduService(retrofit: Retrofit): WanService {
-        return retrofit.create(WanService::class.java)
-    }
+abstract class ThreadRepositoryModule {
+    @Binds
+    abstract fun bindThreadRepository(threadRepository: DefaultThreadRepository): ThreadRepository
 }
-
-

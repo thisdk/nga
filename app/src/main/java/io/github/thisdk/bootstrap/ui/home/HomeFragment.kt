@@ -1,7 +1,6 @@
 package io.github.thisdk.bootstrap.ui.home
 
 import androidx.fragment.app.activityViewModels
-import coil.load
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.thisdk.bootstrap.architecture.ktx.observeEvent
 import io.github.thisdk.bootstrap.architecture.ktx.observeState
@@ -15,19 +14,9 @@ class HomeFragment : BaseMviFragment<HomeViewModel, FragmentHomeBinding>() {
     override val viewModel: HomeViewModel by activityViewModels()
 
     override fun initViewModel() {
-
         viewModel.viewStates.let { state ->
-            state.observeState(viewLifecycleOwner, HomeViewState::value1) {
-                binding.textValue1.text = it
-            }
-            state.observeState(viewLifecycleOwner, HomeViewState::value2) {
-                binding.textValue2.text = it
-            }
-            state.observeState(viewLifecycleOwner, HomeViewState::value3) {
-                binding.textValue3.text = it
-            }
             state.observeState(viewLifecycleOwner, HomeViewState::url) {
-                binding.ivImage.load(it)
+                binding.textValue.text = it
             }
         }
 
@@ -37,24 +26,12 @@ class HomeFragment : BaseMviFragment<HomeViewModel, FragmentHomeBinding>() {
                 is HomeViewEvent.ShowToastRes -> context?.toast(it.message)
             }
         })
-
         initListener()
-
     }
 
     private fun initListener() {
-
-        binding.btnGetValue1.setOnClickListener {
-            viewModel.dispatch(HomeViewAction.Value1)
-        }
-        binding.btnGetValue2.setOnClickListener {
-            viewModel.dispatch(HomeViewAction.Value2)
-        }
-        binding.btnGetValue3.setOnClickListener {
-            viewModel.dispatch(HomeViewAction.Value3)
-        }
-        binding.btnImageLoad.setOnClickListener {
-            viewModel.dispatch(HomeViewAction.LoadImage)
+        binding.btnGetValue.setOnClickListener {
+            viewModel.dispatch(HomeViewAction.FetchThreadData(7, 1))
         }
     }
 

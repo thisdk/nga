@@ -25,8 +25,8 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
@@ -63,15 +63,15 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedataKtx"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodelKtx"
 
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigationFragmentKtx"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigationUiKtx"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutinesCore"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutinesAndroid"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutines"
 
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerialization"
 
-    kapt "com.google.dagger:hilt-android-compiler:$hiltAndroidCompiler"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltAndroid"
     implementation "com.google.dagger:hilt-android:$hiltAndroid"
 
     implementation "io.coil-kt:coil:$coil"
@@ -81,8 +81,6 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
 
-    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
-
-
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$retrofit2KotlinxSerialization"
 
 }
