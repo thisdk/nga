@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">NationalGayAlliance</string>
     <string name="title_home">NGA</string>
-    <string name="title_mine">ME</string>
+    <string name="title_mine">Mine</string>
+    <string name="title_setting">Setting</string>
     <string name="image_view">Image</string>
 </resources>

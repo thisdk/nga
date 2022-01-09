@@ -17,5 +17,11 @@
         android:label="@string/title_mine"
         tools:layout="@layout/fragment_mine" />
 
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="io.github.thisdk.nga.ui.setting.SettingFragment"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting" />
+
 
 </navigation>

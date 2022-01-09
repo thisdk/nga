@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NGA论坛</string>
+    <string name="title_home">论坛</string>
+    <string name="title_mine">我的</string>
+    <string name="title_setting">设置</string>
+    <string name="image_view">图片</string>
+</resources>
