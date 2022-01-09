@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import io.github.thisdk.nga.domain.Category
 
 sealed class HomeViewAction {
+    data class PageChange(val currentItem: Int) : HomeViewAction()
     object QueryCategory : HomeViewAction()
 }
 
@@ -13,6 +14,7 @@ sealed class HomeViewEvent {
 }
 
 data class HomeViewState(
+    val currentItem: Int = 0,
     val category: Array<Category> = arrayOf()
 ) {
     override fun equals(other: Any?): Boolean {
@@ -21,13 +23,17 @@ data class HomeViewState(
 
         other as HomeViewState
 
+        if (currentItem != other.currentItem) return false
         if (!category.contentEquals(other.category)) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        return category.contentHashCode()
+        var result = currentItem
+        result = 31 * result + category.contentHashCode()
+        return result
     }
+
 
 }

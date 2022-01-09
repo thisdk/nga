@@ -28,6 +28,13 @@ class HomeViewModel @Inject constructor(
     fun dispatch(action: HomeViewAction) {
         when (action) {
             is HomeViewAction.QueryCategory -> queryCategory()
+            is HomeViewAction.PageChange -> pageChange(action.currentItem)
+        }
+    }
+
+    private fun pageChange(currentItem: Int) {
+        viewModelScope.launch {
+            _viewStates.setState { copy(currentItem = currentItem) }
         }
     }
 
