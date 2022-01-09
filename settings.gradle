@@ -4,8 +4,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
-        maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "bootstrap"
+rootProject.name = "nga"
 include ':app'

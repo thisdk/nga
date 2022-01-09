@@ -14,13 +14,22 @@ android {
         targetSdk rootProject.targetSdk
         versionCode rootProject.versionCode
         versionName rootProject.versionName
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"
+                ]
+            }
+        }
     }
     signingConfigs {
         release {
-            storeFile file('../bootstrap.jks')
-            storePassword 'bootstrap'
-            keyAlias 'bootstrap'
-            keyPassword 'bootstrap'
+            storeFile file('../nga.jks')
+            storePassword 'nga_pass'
+            keyAlias 'nga'
+            keyPassword 'nga_pass'
         }
     }
     buildTypes {
@@ -59,12 +68,19 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat"
     implementation "com.google.android.material:material:$material"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview"
 
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedataKtx"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodelKtx"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+
+    implementation "androidx.viewpager2:viewpager2:$viewpager2"
+
+    kapt "androidx.room:room-compiler:$room"
+    implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.room:room-ktx:$room"
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinxCoroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinxCoroutines"
@@ -81,6 +97,6 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
 
-    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$retrofit2KotlinxSerialization"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$serializationConverter"
 
 }

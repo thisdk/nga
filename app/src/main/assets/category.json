@@ -1,0 +1,30 @@
+[
+  {
+    "cid": "fast",
+    "name": "收藏版面"
+  },
+  {
+    "cid": "other",
+    "name": "网事杂谈"
+  },
+  {
+    "cid": "bliz",
+    "name": "暴雪游戏"
+  },
+  {
+    "cid": "wow",
+    "name": "魔兽世界"
+  },
+  {
+    "cid": "riot",
+    "name": "拳头游戏"
+  },
+  {
+    "cid": "valve",
+    "name": "Valve Games"
+  },
+  {
+    "cid": "games",
+    "name": "游戏专版"
+  }
+]

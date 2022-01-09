@@ -20,28 +20,28 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+# viewbinding
 -keepclassmembers class * implements androidx.viewbinding.ViewBinding {
   public static * inflate(android.view.LayoutInflater);
   public static * inflate(android.view.LayoutInflater, android.view.ViewGroup, boolean);
 }
 
--if @kotlinx.serialization.Serializable class ** -keepclassmembers class <1> {
+# serialization
+-if @kotlinx.serialization.Serializable class **
+-keepclassmembers class <1> {
     static <1>$Companion Companion;
 }
-
--if @kotlinx.serialization.Serializable class ** {
-    static **$* *;
-}
+-if @kotlinx.serialization.Serializable class ** {static **$* *;}
 -keepclassmembers class <1>$<3> {
     kotlinx.serialization.KSerializer serializer(...);
 }
-
--if @kotlinx.serialization.Serializable class ** {
-    public static ** INSTANCE;
-}
+-if @kotlinx.serialization.Serializable class ** {public static ** INSTANCE;}
 -keepclassmembers class <1> {
     public static <1> INSTANCE;
     kotlinx.serialization.KSerializer serializer(...);
 }
-
 -keepattributes RuntimeVisibleAnnotations,AnnotationDefault
+
+# NGA
+-keepclassmembers class okhttp3.Response {okhttp3.Headers headers;}
+-keepclassmembers class * extends okhttp3.ResponseBody {java.lang.String contentTypeString;}

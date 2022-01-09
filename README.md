@@ -1,10 +1,10 @@
- # bootstrap
+ # NGA
 
-android kotlin mvi 快速开发框架
+使用Android Jetpack架构组件开发的NGA客户端,使用MVI架构开发
 
 ## License
 
-    Copyright 2021 thisdk Contributors
+    Copyright 2022 thisdk Contributors
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">bootstrap</string>
-    <string name="title_home">Home</string>
-    <string name="title_mine">Mine</string>
+    <string name="app_name">NationalGayAlliance</string>
+    <string name="title_home">NGA</string>
+    <string name="title_mine">ME</string>
+    <string name="image_view">Image</string>
 </resources>

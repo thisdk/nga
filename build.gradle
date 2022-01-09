@@ -19,7 +19,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    applicationId = "io.github.thisdk.bootstrap"
+    applicationId = "io.github.thisdk.nga"
     compileSdk = 31
     minSdk = 25
     targetSdk = 31
@@ -31,14 +31,17 @@ ext {
     appcompat = '1.4.0'
     material = '1.4.0'
     constraintlayout = '2.1.2'
+    recyclerview = '1.2.1'
     livedataKtx = '2.4.0'
     viewmodelKtx = '2.4.0'
     navigation = '2.3.5'
+    viewpager2 = '1.0.0'
+    room = '2.4.0'
     kotlinxCoroutines = '1.6.0'
     kotlinxSerialization = "1.3.2"
     hiltAndroid = '2.40.5'
     coil = '1.4.0'
     okhttp = '5.0.0-alpha.3'
     retrofit = '2.9.0'
-    retrofit2KotlinxSerialization = '0.8.0'
+    serializationConverter = '0.8.0'
 }
