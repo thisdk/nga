@@ -9,7 +9,6 @@ import io.github.thisdk.nga.architecture.ktx.asLiveData
 import io.github.thisdk.nga.architecture.ktx.setState
 import io.github.thisdk.nga.db.AppDatabase
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -40,9 +39,7 @@ class HomeViewModel @Inject constructor(
 
     private fun queryCategory() {
         viewModelScope.launch {
-            flow {
-                emit(appDatabase.categoryDao().queryAll())
-            }.onEach {
+            appDatabase.categoryDao().queryAllFlow().onEach {
                 _viewStates.setState { copy(category = it) }
             }.collect()
         }

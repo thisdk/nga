@@ -15,25 +15,5 @@ sealed class HomeViewEvent {
 
 data class HomeViewState(
     val currentItem: Int = 0,
-    val category: Array<Category> = arrayOf()
-) {
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as HomeViewState
-
-        if (currentItem != other.currentItem) return false
-        if (!category.contentEquals(other.category)) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = currentItem
-        result = 31 * result + category.contentHashCode()
-        return result
-    }
-
-
-}
+    val category: List<Category> = listOf()
+)

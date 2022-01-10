@@ -5,12 +5,13 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import io.github.thisdk.nga.domain.Forum
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ForumDao {
 
     @Query("SELECT * FROM forum WHERE cid IN (:cid)")
-    suspend fun queryAllByCid(cid: String): Array<Forum>
+    fun queryAllByCidFlow(cid: String): Flow<List<Forum>>
 
     @Insert
     suspend fun insertAll(vararg forum: Forum)

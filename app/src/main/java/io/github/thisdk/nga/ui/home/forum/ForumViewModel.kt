@@ -9,7 +9,6 @@ import io.github.thisdk.nga.architecture.ktx.asLiveData
 import io.github.thisdk.nga.architecture.ktx.setState
 import io.github.thisdk.nga.db.AppDatabase
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,9 +32,7 @@ class ForumViewModel @Inject constructor(
 
     private fun queryForum(cid: String) {
         viewModelScope.launch {
-            flow {
-                emit(appDatabase.forumDao().queryAllByCid(cid))
-            }.onEach {
+            appDatabase.forumDao().queryAllByCidFlow(cid).onEach {
                 _viewStates.setState { copy(forum = it) }
             }.collect()
         }

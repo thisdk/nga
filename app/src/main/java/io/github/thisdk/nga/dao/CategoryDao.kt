@@ -5,12 +5,16 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import io.github.thisdk.nga.domain.Category
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CategoryDao {
 
     @Query("SELECT * FROM category")
-    suspend fun queryAll(): Array<Category>
+    fun queryAllFlow(): Flow<List<Category>>
+
+    @Query("SELECT * FROM category")
+    suspend fun queryAll(): List<Category>
 
     @Insert
     suspend fun insertAll(vararg category: Category)

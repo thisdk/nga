@@ -40,11 +40,11 @@ class App : Application() {
             val category = assets.open("category.json").bufferedReader().use {
                 it.readText()
             }
+            appDatabase.categoryDao().insertAll(*Json.decodeFromString<Array<Category>>(category))
+
             val forum = assets.open("forum.json").bufferedReader().use {
                 it.readText()
             }
-
-            appDatabase.categoryDao().insertAll(*Json.decodeFromString<Array<Category>>(category))
             appDatabase.forumDao().insertAll(*Json.decodeFromString<Array<Forum>>(forum))
 
         }
