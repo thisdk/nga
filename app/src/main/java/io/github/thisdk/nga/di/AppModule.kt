@@ -1,9 +1,7 @@
 package io.github.thisdk.nga.di
 
 import android.content.Context
-import android.graphics.Bitmap
 import androidx.room.Room
-import coil.ImageLoader
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Binds
 import dagger.Module
@@ -50,9 +48,9 @@ object OkHttpClientModule {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC)
         return OkHttpClient.Builder()
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
+            .connectTimeout(AppConfig.NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+            .readTimeout(AppConfig.NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+            .writeTimeout(AppConfig.NETWORK_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .addInterceptor(NgaInterceptor())
             .addInterceptor(httpLoggingInterceptor)
             .build()
@@ -70,22 +68,6 @@ object RetrofitModule {
             .baseUrl(AppConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
-            .build()
-    }
-}
-
-@Module
-@InstallIn(SingletonComponent::class)
-object ImageLoaderModule {
-    @Singleton
-    @Provides
-    fun provideImageLoader(
-        @ApplicationContext context: Context,
-        okHttpClient: OkHttpClient
-    ): ImageLoader {
-        return ImageLoader.Builder(context)
-            .bitmapConfig(Bitmap.Config.RGB_565)
-            .okHttpClient(okHttpClient)
             .build()
     }
 }
