@@ -21,6 +21,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>() {
 
         val navView: BottomNavigationView = binding.contentMain.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_mine, R.id.navigation_setting

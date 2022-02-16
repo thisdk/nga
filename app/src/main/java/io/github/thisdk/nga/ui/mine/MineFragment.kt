@@ -14,9 +14,9 @@ class MineFragment : BaseBindingFragment<FragmentMineBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.text.observe(viewLifecycleOwner, {
+        viewModel.text.observe(viewLifecycleOwner) {
             binding.textMine.text = it
-        })
+        }
     }
 
 }

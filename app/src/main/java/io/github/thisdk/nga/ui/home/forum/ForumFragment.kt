@@ -32,12 +32,12 @@ class ForumFragment : BaseMviFragment<ForumViewModel, FragmentForumBinding>() {
             }
         }
 
-        viewModel.viewEvents.observeEvent(viewLifecycleOwner, {
+        viewModel.viewEvents.observeEvent(viewLifecycleOwner) {
             when (it) {
                 is ForumViewEvent.ShowToastStr -> context?.toast(it.message)
                 is ForumViewEvent.ShowToastRes -> context?.toast(it.message)
             }
-        })
+        }
 
         viewModel.dispatch(ForumViewAction.QueryForum(cid))
 

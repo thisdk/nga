@@ -1,6 +1,7 @@
 package io.github.thisdk.nga.ui.home
 
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,12 +42,12 @@ class HomeFragment : BaseMviFragment<HomeViewModel, FragmentHomeBinding>() {
 
         }
 
-        viewModel.viewEvents.observeEvent(viewLifecycleOwner, {
+        viewModel.viewEvents.observeEvent(viewLifecycleOwner) {
             when (it) {
                 is HomeViewEvent.ShowToastStr -> context?.toast(it.message)
                 is HomeViewEvent.ShowToastRes -> context?.toast(it.message)
             }
-        })
+        }
 
         binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

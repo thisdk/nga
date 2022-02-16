@@ -14,9 +14,9 @@ class SettingFragment : BaseBindingFragment<FragmentSettingBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.text.observe(viewLifecycleOwner, {
+        viewModel.text.observe(viewLifecycleOwner) {
             binding.textSetting.text = it
-        })
+        }
     }
 
 }

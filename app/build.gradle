@@ -26,16 +26,16 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('../nga.jks')
-            storePassword 'nga_pass'
-            keyAlias 'nga'
-            keyPassword 'nga_pass'
+            storeFile file('../release.jks')
+            storePassword 'release'
+            keyAlias 'release'
+            keyPassword 'release'
         }
     }
     buildTypes {
         debug {
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {
