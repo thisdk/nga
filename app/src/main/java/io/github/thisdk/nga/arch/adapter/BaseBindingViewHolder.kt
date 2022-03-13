@@ -1,4 +1,4 @@
-package io.github.thisdk.nga.architecture.adapter
+package io.github.thisdk.nga.arch.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding

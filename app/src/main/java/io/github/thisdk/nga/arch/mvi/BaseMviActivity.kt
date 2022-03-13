@@ -1,11 +1,11 @@
-package io.github.thisdk.nga.architecture.mvi
+package io.github.thisdk.nga.arch.mvi
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
-import io.github.thisdk.nga.architecture.viewbinding.BaseBindingActivity
+import io.github.thisdk.nga.arch.viewbinding.BaseBindingActivity
 
-abstract class BaseMviActivity<VM : ViewModel, VB : ViewBinding> : BaseBindingActivity<VB>() {
+abstract class BaseMviActivity<VB : ViewBinding, VM : ViewModel> : BaseBindingActivity<VB>() {
 
     protected abstract val viewModel: VM
 

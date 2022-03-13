@@ -8,7 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.thisdk.nga.R
-import io.github.thisdk.nga.architecture.viewbinding.BaseBindingActivity
+import io.github.thisdk.nga.arch.viewbinding.BaseBindingActivity
 import io.github.thisdk.nga.databinding.ActivityMainBinding
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package io.github.thisdk.nga.architecture.viewbinding
+package io.github.thisdk.nga.arch.viewbinding
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import io.github.thisdk.nga.utils.ViewBindingUtil
+import java.lang.reflect.ParameterizedType
 
 abstract class BaseBindingFragment<VB : ViewBinding> : Fragment() {
 
@@ -14,12 +14,21 @@ abstract class BaseBindingFragment<VB : ViewBinding> : Fragment() {
 
     protected val binding: VB get() = _binding!!
 
+    @Suppress("UNCHECKED_CAST")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = ViewBindingUtil.inflateWithGeneric(this, layoutInflater, container, false)
+        val type = javaClass.genericSuperclass
+        val clazz = (type as ParameterizedType).actualTypeArguments[0] as Class<*>
+        val method = clazz.getMethod(
+            "inflate",
+            LayoutInflater::class.java,
+            ViewGroup::class.java,
+            Boolean::class.java
+        )
+        _binding = method.invoke(null, layoutInflater, container, false) as VB
         return binding.root
     }
 

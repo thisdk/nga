@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.thisdk.nga.architecture.viewbinding.BaseBindingFragment
+import io.github.thisdk.nga.arch.viewbinding.BaseBindingFragment
 import io.github.thisdk.nga.databinding.FragmentMineBinding
 
 @AndroidEntryPoint

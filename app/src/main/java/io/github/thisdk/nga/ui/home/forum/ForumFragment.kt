@@ -3,15 +3,15 @@ package io.github.thisdk.nga.ui.home.forum
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.thisdk.nga.architecture.ktx.observeEvent
-import io.github.thisdk.nga.architecture.ktx.observeState
-import io.github.thisdk.nga.architecture.ktx.toast
-import io.github.thisdk.nga.architecture.mvi.BaseMviFragment
+import io.github.thisdk.nga.arch.ktx.observeEvent
+import io.github.thisdk.nga.arch.ktx.observeState
+import io.github.thisdk.nga.arch.ktx.toast
+import io.github.thisdk.nga.arch.mvi.BaseMviFragment
 import io.github.thisdk.nga.databinding.FragmentForumBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ForumFragment : BaseMviFragment<ForumViewModel, FragmentForumBinding>() {
+class ForumFragment : BaseMviFragment<FragmentForumBinding, ForumViewModel>() {
 
     override val viewModel: ForumViewModel by viewModels()
 

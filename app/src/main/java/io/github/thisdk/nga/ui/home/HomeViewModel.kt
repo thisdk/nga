@@ -4,9 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.thisdk.nga.architecture.component.SingleLiveEvents
-import io.github.thisdk.nga.architecture.ktx.asLiveData
-import io.github.thisdk.nga.architecture.ktx.setState
+import io.github.thisdk.nga.arch.component.SingleLiveEvents
+import io.github.thisdk.nga.arch.ktx.asLiveData
+import io.github.thisdk.nga.arch.ktx.setState
 import io.github.thisdk.nga.db.AppDatabase
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach

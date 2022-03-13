@@ -1,4 +1,4 @@
-package io.github.thisdk.nga.architecture.ktx
+package io.github.thisdk.nga.arch.ktx
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
