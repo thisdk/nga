@@ -1,7 +1,5 @@
 package io.github.thisdk.nga.ui.mine
 
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.activityViewModels
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.thisdk.nga.arch.viewbinding.BaseBindingFragment
@@ -12,8 +10,7 @@ class MineFragment : BaseBindingFragment<FragmentMineBinding>() {
 
     private val viewModel: MineViewModel by activityViewModels()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun initView() {
         viewModel.text.observe(viewLifecycleOwner) {
             binding.textMine.text = it
         }

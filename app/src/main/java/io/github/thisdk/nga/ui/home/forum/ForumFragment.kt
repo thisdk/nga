@@ -20,10 +20,12 @@ class ForumFragment : BaseMviFragment<FragmentForumBinding, ForumViewModel>() {
     @Inject
     lateinit var adapter: ForumAdapter
 
-    override fun initViewModel() {
-
+    override fun initView() {
         binding.rvForumRecyclerView.layoutManager = GridLayoutManager(context, 3)
         binding.rvForumRecyclerView.adapter = adapter
+    }
+
+    override fun initViewModel() {
 
         viewModel.viewStates.let { state ->
 

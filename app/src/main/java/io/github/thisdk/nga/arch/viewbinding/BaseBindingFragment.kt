@@ -29,8 +29,11 @@ abstract class BaseBindingFragment<VB : ViewBinding> : Fragment() {
             Boolean::class.java
         )
         _binding = method.invoke(null, layoutInflater, container, false) as VB
+        initView()
         return binding.root
     }
+
+    protected abstract fun initView()
 
     override fun onDestroyView() {
         super.onDestroyView()

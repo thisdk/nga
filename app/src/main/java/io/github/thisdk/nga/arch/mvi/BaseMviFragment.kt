@@ -17,5 +17,4 @@ abstract class BaseMviFragment<VB : ViewBinding, VM : ViewModel> : BaseBindingFr
 
     protected abstract fun initViewModel()
 
-
 }

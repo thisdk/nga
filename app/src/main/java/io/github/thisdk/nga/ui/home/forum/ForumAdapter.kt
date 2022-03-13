@@ -3,6 +3,7 @@ package io.github.thisdk.nga.ui.home.forum
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import coil.load
+import dagger.hilt.android.scopes.FragmentScoped
 import io.github.thisdk.nga.R
 import io.github.thisdk.nga.arch.adapter.BaseBindingAdapter
 import io.github.thisdk.nga.arch.adapter.BaseBindingViewHolder
@@ -10,6 +11,7 @@ import io.github.thisdk.nga.databinding.ItemForumLayoutBinding
 import io.github.thisdk.nga.domain.Forum
 import javax.inject.Inject
 
+@FragmentScoped
 class ForumAdapter @Inject constructor() : BaseBindingAdapter<Forum, ItemForumLayoutBinding>() {
 
     override fun onCreateViewHolder(
